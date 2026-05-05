@@ -1,17 +1,9 @@
-pipeline {
+	pipeline {
     agent any
     stages {
-        stage('Checkout Code') {
-        steps {
-          echo 'Pulling latest code from GitHub...'
-          git branch: 'main', url: 'https://github.com/shivahrr143-max/NewGit-2.git'
-          }
-       }
-
- 
         stage('Ansible Configure') {
             steps {
-                dir('Ansible') {
+                dir('ansible') {
                     sh 'ansible-playbook -i inventory.ini playbook.yaml'
                 }
             }
